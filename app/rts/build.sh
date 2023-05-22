@@ -5,7 +5,12 @@ set -o errexit
 cd "$(dirname "$0")"
 rm -rf dist/
 # This is required for the first time build as node_modules is not present in the image
+echo "Running yarn install"
+echo $(ls)
+
 yarn install --immutable
+echo $(ls)
+
 yarn tsc && yarn tsc-alias
 # Keep copy of all dependencies in node_modules_bkp
 mv node_modules node_modules_bkp
