@@ -116,11 +116,22 @@ jobs:
         with:
           node-version: "16.14.0"
 
+      - name: List directories
+        run: |
+          pwd
+          ls
+    
+
       - name: Build
         run: |
           echo 'export const VERSION = "${{ needs.prelude.outputs.tag }}"' > src/version.js
           yarn build
 
+      - name: List directories
+        run: |
+          pwd
+          ls
+          
       # Tar the bundles to speed up the upload & download process
       - name: Tar the rts bundles
         run: |
